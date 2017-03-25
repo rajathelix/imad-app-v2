@@ -13,6 +13,7 @@ var config = {
     port: '5432',
     password: process.env.DB_PASSWORD
 };
+var pool = new Pool(config);
 
 var app = express();
 app.use(morgan('combined'));
@@ -154,7 +155,7 @@ app.get('/logout', function (req, res) {
    res.send('<html><body>Logged out!<br/><br/><a href="/">Back to home</a></body></html>');
 });
 
-var pool = new Pool(config);
+
 
 app.get('/get-articles', function (req, res) {
    // make a select request
